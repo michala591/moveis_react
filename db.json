@@ -1,0 +1,30 @@
+
+{
+    "movies": [
+      {
+        "id": 1,
+        "title": "Inception",
+        "description": "A mind-bending thriller",
+        "poster": "https://arava.co.il/uploads/n/1719127697.8111.jpg",
+        "trailer": "https://www.youtube.com/watch?v=7WYOIIIMtOI"
+  
+      },
+      {
+        "id": 2,
+        "title": "Titanic",
+        "description": "A tragic love story",
+        "poster": "https://www.haifa.muni.il/wp-content/uploads/2024/07/%D7%94%D7%A0%D7%A1%D7%99%D7%9B%D7%94-%D7%95%D7%94%D7%93%D7%A8%D7%A7%D7%95%D7%9F.jpg",
+        "trailer": "https://www.youtube.com/watch?v=7WYOIIIMtOI"
+      },
+  
+      {
+        "id": 3,
+        "title": "The Matrix",
+        "description": "A sci-fi classic",
+        "poster": "https://bestformeblog.wordpress.com/wp-content/uploads/2016/07/d79ed7a9d79ed7a8-d794d790d7a8d799d795d7aa.jpg?w=640",
+        "trailer": "https://www.youtube.com/watch?v=7WYOIIIMtOI"
+  
+      }
+    ]
+  }
+  
