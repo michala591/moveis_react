@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import MoviesContext from "../MoviesContext";
+import { Link } from "react-router-dom";
+
 
 function MovieList() {
-    const [genres, setGenres] = useState([]);
-
+    const { movies, setMovies } = useContext(MoviesContext)
     useEffect(() => {
         fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", {
             method: "GET",
@@ -17,7 +19,7 @@ function MovieList() {
                 }
                 return response.json();
             })
-            .then((data) => setGenres(data.genres))
+            .then((data) => setMovies(data.genres))
             .catch((error) => console.error("Error fetching genres:", error));
     }, []);
 
@@ -25,9 +27,10 @@ function MovieList() {
         <div>
             <h2>Movie Genres</h2>
             <ul>
-                {genres.map((genre) => (
-                    <li key={genre.id}>{genre.name}</li>
-                ))}
+                {movies.map((movie) => (
+                    <li key={movie.id}>
+                        <Link to={`/moviesDetail/${movie.id}`}>{movie.name}</Link>
+                    </li>))}
             </ul>
         </div>
     );
