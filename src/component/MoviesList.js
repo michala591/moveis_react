@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import MoviesContext from "../MoviesContext";
 import { Link } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';  // לוודא ש- Bootstrap מוטמע בפרויקט שלך
 
 function MovieList() {
-    const { movies, setMovies } = useContext(MoviesContext)
+    const { movies, setMovies } = useContext(MoviesContext);
+
     useEffect(() => {
         fetch("https://api.themoviedb.org/3/genre/movie/list?language=en", {
             method: "GET",
@@ -24,14 +25,23 @@ function MovieList() {
     }, []);
 
     return (
-        <div>
-            <h2>Movie Genres</h2>
-            <ul>
+        <div className="container mt-5">
+            <h2 className="text-center mb-4 text-light">Movie Genres</h2>
+            <div className="row">
                 {movies.map((movie) => (
-                    <li key={movie.id}>
-                        <Link to={`/moviesDetail/${movie.id}`}>{movie.name}</Link>
-                    </li>))}
-            </ul>
+                    <div key={movie.id} className="col-md-4 mb-4">
+                        <div className="card shadow-lg border-0 rounded">
+                            <div className="card-body text-center">
+                                <h5 className="card-title text-primary">{movie.name}</h5>
+                                <p className="card-text text-muted">Explore the genre</p>
+                                <Link to={`/moviesDetail/${movie.id}`} className="btn btn-primary w-100">
+                                    View Details
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import MoviesContext from "../MoviesContext";
 import { useParams } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';  // לוודא ש- Bootstrap מוטמע בפרויקט שלך
 
 function MovieDetail() {
     const { id } = useParams(); // Get movie id from URL
@@ -27,31 +27,38 @@ function MovieDetail() {
                 setSelectedMovie(data);
             })
             .catch((error) => console.error("Error fetching movie details:", error));
-    }, []);
+    }, [id]);
 
     if (!selectedMovie) {
         return <p>Loading movie details...</p>;
     }
 
     return (
-        <div className="card" style={{ width: "18rem", margin: "20px" }}>
-            <div class="card" style={{ width: "18rem" }}>
-                <img
-                    src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`}
-                    className="card-img-top"
-                    alt={selectedMovie.title}
-                />
-                <div class="card-body">
-                    <h5 class="card-title">{selectedMovie.title}</h5>
-                    <p class="card-text">{selectedMovie.overview}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Release Date:</strong> {selectedMovie.release_date}</li>
-                    <li class="list-group-item"><strong>Rating:</strong> {selectedMovie.vote_average} / 10</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#/" class="card-link">Card link</a>
-                    <a href="#/" class="card-link">Another link</a>
+        <div className="container mt-5">
+            <div className="card mb-4 shadow-lg border-0 rounded">
+                <div className="row g-0">
+                    <div className="col-md-4">
+                        <img
+                            src={`https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`}
+                            className="card-img-top rounded-start"
+                            alt={selectedMovie.title}
+                            style={{ maxHeight: '500px', objectFit: 'cover' }}
+                        />
+                    </div>
+                    <div className="col-md-8">
+                        <div className="card-body">
+                            <h3 className="card-title">{selectedMovie.title}</h3>
+                            <p className="card-text">{selectedMovie.overview}</p>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item"><strong>Release Date:</strong> {selectedMovie.release_date}</li>
+                                <li className="list-group-item"><strong>Rating:</strong> {selectedMovie.vote_average} / 10</li>
+                            </ul>
+                            <div className="card-body">
+                                <a href="#/" className="card-link text-primary">More Info</a>
+                                <a href="#/" className="card-link text-secondary">Watch Trailer</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
