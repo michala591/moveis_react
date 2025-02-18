@@ -27,6 +27,7 @@ function MovieDetail() {
                 setSelectedMovie(data);
             })
             .catch((error) => console.error("Error fetching movie details:", error));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     if (!selectedMovie) {
